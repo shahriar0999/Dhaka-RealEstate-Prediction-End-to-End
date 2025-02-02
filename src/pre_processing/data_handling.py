@@ -35,8 +35,8 @@ def split_dataset(data, test_size=0.25, random_state=5):
 import os
 from joblib import dump
 
-def save_pipeline(pipeline_to_save):
-    save_path = os.path.join(config.SAVE_MODEL_PATH, config.MODEL_NAME)
+def save_pipeline(pipeline_to_save, model_name):
+    save_path = os.path.join(config.SAVE_MODEL_PATH, model_name)
     
     # Create the directory if it doesn't exist
     os.makedirs(os.path.dirname(save_path), exist_ok=True)  # <-- Key fix
