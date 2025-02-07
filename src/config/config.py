@@ -20,13 +20,13 @@ SAVE_MODEL_PATH = os.path.join(PACKAGE_ROOT, "trained_models")
 TARGET = "price"
 
 # Final features used for model training
-FEATURES = ['city_location', 'block/sector', 'bedroom', 'bathroom',
+FEATURES = ['city_location', 'block_sector', 'bedroom', 'bathroom',
        'sqrtFeet', 'price']
 
-PRED_FEATURES = ['city_location', 'block/sector', 'bedroom', 'bathroom', 'sqrtFeet']
+PRED_FEATURES = ['city_location', 'block_sector', 'bedroom', 'bathroom', 'sqrtFeet']
 
 # Categorical features
-CAT_FEATURES = ['city_location', 'block/sector']
+CAT_FEATURES = ['city_location', 'block_sector']
 
 # Numerical features
 NUM_FEATURES = ['bedroom', 'bathroom', 'sqrtFeet']
@@ -38,11 +38,7 @@ DROP_FEATURES = 'price'
 SCALED_FEATURES = ['bedroom', 'bathroom', 'sqrtFeet']
 
 # Features to be encoded
-ENCODE_FEATURES = ['city_location', 'block/sector']
+ENCODE_FEATURES = ['city_location', 'block_sector']
 
 # Features to be transformed
-TRANSFORM_FEATURES = ['city_location', 'block/sector']
-
-
-
-
+TRANSFORM_FEATURES = ['city_location', 'block_sector']
