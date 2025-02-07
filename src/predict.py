@@ -23,7 +23,6 @@ def load_model_from_s3(bucket, key):
         obj = s3.get_object(Bucket=bucket, Key=key)
         model_data = obj['Body'].read()
         model = joblib.load(BytesIO(model_data))
-        print(f"Model loaded from s3://{bucket}/{key}")
         return model
     except Exception as e:
         print(f"An error occurred while loading the model: {e}")
@@ -46,7 +45,7 @@ def generate_predictions_for_houseRent():
 #predict individual house rent : bedroom	bathroom	sqrtFeet	
 feature_r = {
     'city_location': 5,
-    'block/sector': 114,
+    'block_sector': 114,
     'bedroom': 3,
     'bathroom': 3,
     'sqrtFeet': 1340
@@ -77,7 +76,7 @@ def generate_predictions_for_housePrice():
 #predict individual house rent : bedroom	bathroom	sqrtFeet	
 feature_p = {
     'city_location': 5,
-    'block/sector': 114,
+    'block_sector': 114,
     'bedroom': 3,
     'bathroom': 3,
     'sqrtFeet': 1340
