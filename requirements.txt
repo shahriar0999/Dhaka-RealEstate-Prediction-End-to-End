@@ -1,0 +1,9 @@
+fastapi[all]
+streamlit==1.41.1
+scikit-learn==1.6.1
+numpy==1.26.4
+pandas==2.2.3
+pytest==8.3.4
+boto3==1.35.86
+joblib==1.4.2
+setuptools==75.6.0
