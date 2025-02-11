@@ -42,6 +42,7 @@ pipeline {
                 script{
                     // Build both FastAPI and Streamlit app images
                     sh """
+                        sh 'docker ps'
                         docker-compose build
                         docker tag fastapi:latest $USERNAME/fastapi-app:$IMAGE_TAG
                         docker tag streamlit:latest $USERNAME/streamlit-app:$IMAGE_TAG
