@@ -18,12 +18,11 @@ pipeline {
             }
         }
         
-        // stage("Test") {
-        //     steps {
-        //         sh "python3 -m pip install pytest"
-        //         sh "pytest tests/test_main.py"
-        //         echo "✅ Successfully passed all tests!"
-        //     }
-        // }
+        stage("Test") {
+            steps {
+                sh ". venv/bin/activate && pytest tests/test_main.py"
+                echo "✅ Successfully passed all tests!"
+            }
+        }
     }
 }
