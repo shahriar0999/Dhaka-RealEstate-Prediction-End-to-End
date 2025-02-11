@@ -19,7 +19,7 @@ pipeline {
         
         stage("Test") {
             steps {
-                sh "python3 -m pip install --break-system-packages pytest"
+                sh "python3 -m pip install pytest"
                 sh "pytest tests/test_main.py"
                 echo "✅ Successfully passed all tests!"
             }
