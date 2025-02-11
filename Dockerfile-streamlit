@@ -1,0 +1,17 @@
+FROM python:3.12.8-alpine3.20
+
+# set the working directory
+WORKDIR /app
+ 
+# copy the current directory content into the container at /app
+COPY . .
+
+# install all packages
+RUN pip install --no-cache-dir -r requirements.txt
+
+# expose the port 8501 for main.py
+EXPOSE 8502
+
+# run the app.py(FastAPI) when the container lunches
+# Command to run the Streamlit app
+CMD ["streamlit", "run", "streamlitApp.py", "--server.port", "8502", "--server.address", "0.0.0.0"]
