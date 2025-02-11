@@ -7,7 +7,7 @@ WORKDIR /app
 COPY . .
 
 # install all packages
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 # expose the port 8501 for main.py
 EXPOSE 8502
