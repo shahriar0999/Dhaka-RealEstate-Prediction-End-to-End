@@ -4,6 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile-fastapi
     container_name: fastapi
+    image: fastapi:latest 
     ports:
       - "8501:8501"  # Expose FastAPI app on port 8000
     networks:
@@ -14,6 +15,7 @@ services:
       context: .
       dockerfile: Dockerfile-streamlit
     container_name: streamlit
+    image: streamlit:latest
     ports:
       - "8502:8502"  # Expose Streamlit app on port 8501
     networks:
