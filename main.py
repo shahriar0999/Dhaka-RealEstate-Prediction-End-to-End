@@ -36,4 +36,4 @@ def predict_rent_price(house_info: HouseInfo):
 
 
 if __name__=="__main__":
-    uvicorn.run(app="main:app", port=8501, reload=True)
+    uvicorn.run(app="main:app", port=8501, reload=True, host="0.0.0.0")

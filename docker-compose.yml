@@ -6,7 +6,7 @@ services:
     container_name: fastapi
     image: fastapi:latest 
     ports:
-      - "8501:8501"  # Expose FastAPI app on port 8000
+      - "8501:8501"  # Expose FastAPI app on port 8501
     networks:
       - app-network
 
@@ -17,7 +17,7 @@ services:
     container_name: streamlit
     image: streamlit:latest
     ports:
-      - "8502:8502"  # Expose Streamlit app on port 8501
+      - "8502:8502"  # Expose Streamlit app on port 8502
     networks:
       - app-network
 
