@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {label "crown"}
     environment {
         USERNAME= 'crownai'
         IMAGE_TAG = "${USERNAME}${env.BUILD_NUMBER}"
