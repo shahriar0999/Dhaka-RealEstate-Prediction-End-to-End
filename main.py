@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
+from pydantic import ValidationError
 import uvicorn
 import pandas as pd
 import numpy as np
@@ -19,21 +20,53 @@ def root():
 
 @app.post("/predict-house-price")
 def predict_house_price(house_info: HouseInfo):
-    house_info_dict = dict(house_info)
-    data = pd.DataFrame([house_info.dict()])
-    pred = house_model.predict(data)
-    estimate_house_price = round(float(np.expm1(pred[0])))
-    return {"Estimated House Price": str(estimate_house_price)+"৳"}
 
-
+    try:
+        data = pd.DataFrame([house_info.dict()])
+        pred = house_model.predict(data)
+        estimate_house_price = round(float(np.expm1(pred[0])))
+        return {"Estimated House Price": str(estimate_house_price)+"৳"}
+    
+    except ValidationError as e:
+        # Handle validation errors explicitly
+        raise HTTPException(
+            status_code=422,  # Unprocessable Entity
+            detail={
+                "message": "Invalid input data",
+                "errors": e.errors()  # Detailed validation errors
+            }
+        )
+    except Exception as e:
+        # Handle any unexpected errors
+        raise HTTPException(
+            status_code=500,  # Internal Server Error
+            detail=f"An error occurred while processing your request: {str(e)}"
+        )
+    
 @app.post("/predict-rent-price")
 def predict_rent_price(house_info: HouseInfo):
-    house_info_dict = dict(house_info)
-    data = pd.DataFrame([house_info_dict])
-    pred = rent_model.predict(data)
-    estimate_house_rent = round(float(pred[0]))
-    return {"Estimated House Rent Amount": str(estimate_house_rent)+"৳"}
+    try:
+        house_info_dict = dict(house_info)
+        data = pd.DataFrame([house_info_dict])
+        pred = rent_model.predict(data)
+        estimate_house_rent = round(float(pred[0]))
+        return {"Estimated House Rent Amount": str(estimate_house_rent)+"৳"}
 
-
+    except ValidationError as e:
+        # Handle validation errors explicitly
+        raise HTTPException(
+            status_code=422,  # Unprocessable Entity
+            detail={
+                "message": "Invalid input data",
+                "errors": e.errors()  # Detailed validation errors
+            }
+        )
+    except Exception as e:
+        # Handle any unexpected errors
+        raise HTTPException(
+            status_code=500,  # Internal Server Error
+            detail=f"An error occurred while processing your request: {str(e)}"
+        )
+    
 if __name__=="__main__":
     uvicorn.run(app="main:app", port=8501, reload=True, host="0.0.0.0")

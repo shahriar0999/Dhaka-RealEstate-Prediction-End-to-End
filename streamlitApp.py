@@ -3,7 +3,7 @@ import requests
 import json
 
 # Define the API endpoint
-API_URL = "http://100.27.190.57:8501/"
+API_URL = "http://localhost:8501/"
 headers = {
   'Content-Type': 'application/json'
 }
