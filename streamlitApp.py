@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import json
 
-# Define the API endpoint
+# Define the API endpoint 
 API_URL = "http://54.89.245.151:8501/"
 headers = {
   'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ elif model == "House Rent Prediction":
     model_api = "predict-rent-price"
 
 if st.button("Predict"):
-    with st.spinner("Predicting.... Please Wait!!!!!!!!!"):
+    with st.spinner("Predicting.... Please Wait!!!!!!!!!!"):
         response = requests.post(API_URL+model_api, json=data, headers=headers)
 
         output = response.json()
