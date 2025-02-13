@@ -73,7 +73,7 @@ elif model == "House Rent Prediction":
     model_api = "predict-rent-price"
 
 if st.button("Predict"):
-    with st.spinner("Predicting.... Please Wait!!!!!!!!!!"):
+    with st.spinner("Predicting.... Please Wait!!!!!!!!!"):
         response = requests.post(API_URL+model_api, json=data, headers=headers)
 
         output = response.json()
